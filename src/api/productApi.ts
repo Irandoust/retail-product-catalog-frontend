@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ServiceResponse } from '../models/serviceResponseModel';
+import { PaginatedResult, ServiceResponse, Product } from '../models';
 
 /**
  * Axios instance with default settings.
@@ -20,7 +20,10 @@ const api = axios.create({
  * @param {number} limit - The number of products to fetch per page (defaults to 10).
  * @returns {Promise<ServiceResponse>} The API response containing the products and pagination data.
  */
-export const fetchProducts = async (page: number = 1, limit: number = 10) => {
+export const fetchProducts = async (
+  page: number = 1,
+  limit: number = 10,
+): Promise<ServiceResponse<PaginatedResult<Product>>> => {
   const response = await api.get(`/products`, {
     params: { page, limit }, // Query parameters for pagination
   });
@@ -33,7 +36,9 @@ export const fetchProducts = async (page: number = 1, limit: number = 10) => {
  * @param {string} id - The unique identifier of the product to fetch.
  * @returns {Promise<ServiceResponse>} The API response containing the product details.
  */
-export const fetchProductById = async (id: string) => {
+export const fetchProductById = async (
+  id: string,
+): Promise<ServiceResponse<Product | null>> => {
   const response = await api.get(`/products/${id}`);
   return response.data;
 };
@@ -50,7 +55,7 @@ export const searchProducts = async (
   term: string,
   page: number = 1,
   limit: number = 10,
-) => {
+): Promise<ServiceResponse<PaginatedResult<Product>>> => {
   const response = await api.get(`products/search`, {
     params: { term, page, limit }, // Query parameters for search term and pagination
   });
