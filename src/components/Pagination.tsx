@@ -34,12 +34,11 @@ export const Pagination: React.FC<PaginationProps> = ({
     <div className="pagination-container">
       <div className="btn-group">
         {Array.from({ length: totalPages }, (_, i) => (
-          <>
+          <span key={i}>
             {
               // Render the "Previous" button on the first iteration
               i === 0 && (
                 <button
-                  key={totalPages + 2}
                   onClick={() => handlePageChange(1)}
                   disabled={currentPage === i + 1}
                   className="btn"
@@ -50,7 +49,6 @@ export const Pagination: React.FC<PaginationProps> = ({
             }
 
             <button
-              key={i}
               onClick={() => handlePageChange(i + 1)}
               disabled={currentPage === i + 1}
               className="btn"
@@ -62,7 +60,6 @@ export const Pagination: React.FC<PaginationProps> = ({
               // Render the "Next" button on the last iteration
               i === totalPages - 1 && (
                 <button
-                  key={totalPages + 1}
                   onClick={() => handlePageChange(1)}
                   disabled={currentPage === i + 1}
                   className="btn"
@@ -71,7 +68,7 @@ export const Pagination: React.FC<PaginationProps> = ({
                 </button>
               )
             }
-          </>
+          </span>
         ))}
       </div>
     </div>
