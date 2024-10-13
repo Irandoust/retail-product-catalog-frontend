@@ -1,3 +1,24 @@
 body {
   margin: 0;
 }
+
+.media .media-left {
+  position: relative;
+  padding-right: 10px;
+  overflow: hidden;
+  min-width: 100px;
+}
+
+.media .media-left img {
+  border: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.media .media-body {
+  padding-left: 10px;
+}
