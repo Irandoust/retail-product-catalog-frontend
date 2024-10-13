@@ -18,7 +18,7 @@ import { Product } from '../models/productModel';
  *
  * @returns {JSX.Element} A product detail page with the product information or a loading/error state.
  */
-const ProductDetailPage: React.FC = () => {
+export const ProductDetailPage: React.FC = () => {
   // Get the product ID from the URL using React Router's useParams
   const { id } = useParams<{ id: string }>();
 
