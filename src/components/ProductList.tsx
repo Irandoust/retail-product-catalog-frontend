@@ -65,7 +65,7 @@ export const ProductList: React.FC<ProductListProps> = ({
 
   if (isLoading) return <Loading />;
 
-  if (isError) return <Error />;
+  if (isError) return <Error text="Error fetching products." />;
 
   // If there are no products found based on the search term
   if (searchTerm && !products.length)
