@@ -11,7 +11,6 @@ export const fetchProducts = async (page: number = 1, limit: number = 10) => {
   const response = await api.get(`/products`, {
     params: { page, limit },
   });
-  console.log(response.data);
   return response.data;
 };
 
