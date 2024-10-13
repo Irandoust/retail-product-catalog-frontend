@@ -40,7 +40,7 @@ const ProductDetailPage: React.FC = () => {
       try {
         const data = await fetchProductById(id!);
         setProduct(data.data);
-        setImageSrc(data.data.imageUrl);
+        setImageSrc(data!.data!.imageUrl);
       } catch (error) {
         setIsError(true);
       }
@@ -62,8 +62,12 @@ const ProductDetailPage: React.FC = () => {
   };
 
   if (isLoading) return <Loading />;
-  if (isError) return <Error />;
-  if (!product) return <NoResult text="No product found with this id." />;
+  if (isError || !product)
+    return (
+      <div className="page-header">
+        <Error text="Error fetching the product or no product exists with the provided ID." />
+      </div>
+    );
 
   return (
     <div>
