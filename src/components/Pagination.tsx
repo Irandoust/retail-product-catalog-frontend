@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/Pagination.css';
 
 interface PaginationProps {
   totalPages: number;
@@ -18,7 +19,7 @@ export const Pagination: React.FC<PaginationProps> = ({
   console.log(totalPages, currentPage, onPageChange);
 
   return (
-    <div>
+    <div className="pagination-container">
       <div className="btn-group">
         {Array.from({ length: totalPages }, (_, i) => (
           <>
