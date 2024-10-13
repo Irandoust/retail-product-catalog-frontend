@@ -1,6 +1,14 @@
-export interface ServiceResponse {
+export interface ServiceResponse<T> {
   success: boolean;
   message: string;
-  data: object;
+  data: T;
   statusCode: number;
+}
+
+export interface PaginatedResult<T> {
+  page: number;
+  limit: number;
+  totalItems: number;
+  totalPages: number;
+  results: T[];
 }
