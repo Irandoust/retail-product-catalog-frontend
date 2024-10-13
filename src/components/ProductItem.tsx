@@ -30,8 +30,9 @@ export const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
         <div className="media-heading">
           <Link to={`/products/${product.id}`}>{product.name}</Link>
         </div>
+        <span className="label label-primary">{product.category}</span>
         <p>{product.description}</p>
-        <p>Price: {product.price}</p>
+        <b>Price: {product.price}</b>
       </div>
       <hr />
     </div>
