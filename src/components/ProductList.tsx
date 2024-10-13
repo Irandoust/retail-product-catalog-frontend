@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { fetchProducts, searchProducts } from '../api/productApi';
-import { ProductItem, Loading, Error, Pagination } from '../components';
+import {
+  ProductItem,
+  Loading,
+  Error,
+  Pagination,
+  NoResult,
+} from '../components';
 
 interface ProductListProps {
   page: number;
@@ -26,9 +32,10 @@ export const ProductList: React.FC<ProductListProps> = ({
       setIsError(false);
 
       try {
-        const data = searchTerm
-          ? await searchProducts(searchTerm, page, limit)
-          : await fetchProducts(page, limit);
+        const data =
+          searchTerm && searchTerm.length >= 3
+            ? await searchProducts(searchTerm, page, limit)
+            : await fetchProducts(page, limit);
         setProducts(data.data.results);
         setTotalPages(data.data.totalPages);
       } catch (error) {
@@ -43,6 +50,13 @@ export const ProductList: React.FC<ProductListProps> = ({
 
   if (isLoading) return <Loading />;
   if (isError) return <Error />;
+  if (searchTerm && !products.length)
+    return (
+      <NoResult text="No products were found with your search criteria." />
+    );
+
+  if (!searchTerm && !products.length)
+    return <NoResult text="No product available." />;
 
   return (
     <div>
