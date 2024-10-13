@@ -2,15 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { fetchProductById } from '../api/productApi';
 import { Loading, Error, NoResult } from '../components';
-
-interface Product {
-  id: string;
-  name: string;
-  category: string;
-  description?: string;
-  price: number;
-  imageUrl: string;
-}
+import { Product } from '../models/productModel';
 
 /**
  * ProductDetailPage Component

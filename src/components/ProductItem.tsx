@@ -1,15 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Product } from '../models/productModel';
 
 interface ProductItemProps {
-  product: {
-    id: string;
-    name: string;
-    category: string;
-    description?: string;
-    price: number;
-    imageUrl: string;
-  };
+  product: Product;
 }
 
 /**
