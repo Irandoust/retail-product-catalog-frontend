@@ -20,6 +20,7 @@ export const ProductListPage: React.FC = () => {
         <h1>Product Catalog</h1>
       </div>
       <SearchBar onSearch={handleSearch} />
+      <hr />
       <ProductList
         page={page}
         limit={10}
