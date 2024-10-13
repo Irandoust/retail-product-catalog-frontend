@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { ProductList, SearchBar } from '../components';
 
 /**
@@ -23,14 +23,18 @@ export const ProductListPage: React.FC = () => {
 
   /**
    * Updates the search term and resets the page to 1.
-   * Triggered when the user submits a new search term.
+   * This function is memoized using useCallback to avoid unnecessary re-renders
+   * when passed down to child components.
+   *
+   * It is triggered when the user submits a new search term, ensuring that the
+   * search term and pagination are properly updated.
    *
    * @param {string} term - The search term entered by the user
    */
-  const handleSearch = (term: string) => {
+  const handleSearch = useCallback((term: string) => {
     setSearchTerm(term);
     setPage(1);
-  };
+  }, []); // No dependencies, so it's only created once
 
   /**
    * Updates the current page for pagination.

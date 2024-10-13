@@ -76,7 +76,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
     else if (term.trim().length >= 3) {
       debouncedSearch(term);
     }
-  }, [term, debouncedSearch]); // Re-run effect whenever 'term' or 'debouncedSearch' changes
+  }, [term, debouncedSearch, onSearch]); // Re-run effect whenever 'term' or 'debouncedSearch' changes
 
   return (
     <div className="search-bar-container">
