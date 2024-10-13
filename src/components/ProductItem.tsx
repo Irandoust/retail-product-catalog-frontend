@@ -32,7 +32,7 @@ export const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
   return (
     <div className="media" key={product.id}>
       <div className="media-left">
-        <img src={imageSrc} onError={handleImageError} />
+        <img src={imageSrc} onError={handleImageError} alt={product.name} />
       </div>
       <div className="media-body">
         <div className="media-heading">
