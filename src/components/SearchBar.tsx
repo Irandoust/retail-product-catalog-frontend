@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import '../styles/SearchBar.css';
 
 interface SearchBarProps {
-  onSearch: (term: string) => void; // Callback function to handle search input
+  onSearch: (term: string) => void;
 }
 
 /**
