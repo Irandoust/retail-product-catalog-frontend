@@ -4,3 +4,4 @@ export { ProductItem } from './ProductItem';
 export { Loading } from './Loading';
 export { Error } from './Error';
 export { Pagination } from './Pagination';
+export { NoResult } from './NoResult';
