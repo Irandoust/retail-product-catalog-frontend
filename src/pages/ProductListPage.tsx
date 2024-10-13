@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
-import { SearchBar } from '../components';
+import { ProductList, SearchBar } from '../components';
 
 export const ProductListPage: React.FC = () => {
-  const [_, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
+  const [page, setPage] = useState(1);
 
   const handleSearch = (term: string) => {
     setSearchTerm(term);
+    setPage(1);
+  };
+
+  const handlePageChange = (newPage: number) => {
+    setPage(newPage);
   };
 
   return (
@@ -14,6 +20,12 @@ export const ProductListPage: React.FC = () => {
         <h1>Product Catalog</h1>
       </div>
       <SearchBar onSearch={handleSearch} />
+      <ProductList
+        page={page}
+        limit={10}
+        searchTerm={searchTerm}
+        onPageChange={handlePageChange}
+      />
     </div>
   );
 };
