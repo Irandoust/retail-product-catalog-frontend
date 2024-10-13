@@ -30,9 +30,11 @@ export const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
   };
 
   return (
-    <div className="media" key={product.id}>
+    <div className="product-item media" key={product.id}>
       <div className="media-left">
-        <img src={imageSrc} onError={handleImageError} alt={product.name} />
+        <Link to={`/products/${product.id}`}>
+          <img src={imageSrc} onError={handleImageError} alt={product.name} />
+        </Link>
       </div>
       <div className="media-body">
         <div className="media-heading">
