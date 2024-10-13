@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { fetchProductById } from '../api/productApi';
-import { Loading, Error, NoResult } from '../components';
+import { Loading, Error } from '../components';
 import { Product } from '../models/productModel';
 
 /**
@@ -62,9 +62,17 @@ export const ProductDetailPage: React.FC = () => {
   };
 
   if (isLoading) return <Loading />;
+
+  // Returning the Error component with breadcrumb to allow the user to hit back
   if (isError || !product)
     return (
       <div className="page-header">
+        <ol className="breadcrumb">
+          <li>
+            <Link to="/">Procucts</Link>
+          </li>
+          <li className="active">Product Not Found</li>
+        </ol>
         <Error text="Error fetching the product or no product exists with the provided ID." />
       </div>
     );
